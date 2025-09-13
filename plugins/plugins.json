@@ -3,12 +3,12 @@
     "plugins": [
         {
             "name": "腾讯音乐",
-            "url": "https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/tx.js",
+            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/tx.js",
             "version": "2025.09.13"
         },
         {
             "name": "网易音乐",
-            "url": "https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/wy.js",
+            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/wy.js",
             "version": "2025.09.13"
         },
         {
