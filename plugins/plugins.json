@@ -12,6 +12,11 @@
             "version": "2025.09.13"
         },
         {
+            "name": "GitCode",
+            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/git.js",
+            "version": "2025.08.26"
+        },
+        {
             "name": "哔哩哔哩",
             "url": "https://gitee.com/maotoumao/MusicFreePlugins/raw/v0.1/dist/bilibili/index.js",
             "version": "0.2.3"
