@@ -1,0 +1,25 @@
+{
+    "desc": "此链接为 MusicFree 插件，插件开发及使用方式参考 https://musicfree.upup.fun",
+    "plugins": [
+        {
+            "name": "腾讯音乐",
+            "url": "https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/tx.js",
+            "version": "2025.09.13"
+        },
+        {
+            "name": "网易音乐",
+            "url": "https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/wy.js",
+            "version": "2025.09.13"
+        },
+        {
+            "name": "哔哩哔哩",
+            "url": "https://gitee.com/maotoumao/MusicFreePlugins/raw/v0.1/dist/bilibili/index.js",
+            "version": "0.2.3"
+        },
+        {
+            "name": "汽水音乐",
+            "url": "https://gitee.com/hongmengv5/musicfree/raw/master/qishui.js",
+            "version": "0.1.5"
+        }
+    ]
+}
