@@ -12,9 +12,9 @@
             "version": "2025.09.13"
         },
         {
-            "name": "GitCode",
-            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/git.js",
-            "version": "2025.08.26"
+            "name": "酷狗音乐",
+            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/kg.js",
+            "version": "2025.09.14"
         },
         {
             "name": "哔哩哔哩",
@@ -25,6 +25,11 @@
             "name": "汽水音乐",
             "url": "https://gitee.com/hongmengv5/musicfree/raw/master/qishui.js",
             "version": "0.1.5"
+        },
+        {
+            "name": "GitCode",
+            "url": "http://51.195.241.253:8080/https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/git.js",
+            "version": "2025.08.26"
         }
     ]
 }
