@@ -185,7 +185,7 @@ async function webSign(url, params, path = "data", page = 1) {
         "uuid=" + mid,
         "appid=1058",
         "srcappid=2919",
-        "clientver=1000",
+        "clientver=1000", // 11409
         "clienttime=" + mid,
         "pagesize=" + pageSize,
         "page=" + page,
@@ -219,6 +219,7 @@ async function webSign(url, params, path = "data", page = 1) {
     })).data;
     return _res[path] || {};
 }
+
 
 
 
@@ -374,7 +375,7 @@ async function getArtistWorks(artistItem, page, type) {
 
 // 专辑详情
 async function getAlbumInfo(albumItem, page = 1) {
-    let _ = await webSign("https://m3ws.kugou.com/api/v1/album/info", ["albumid=" + albumItem.id, "version=1000", "plat=5"]);
+    let _ = await webSign("https://m3ws.kugou.com/api/v1/album/info", ["albumid=" + albumItem.id, "version=1000", "plat=5"], "data", page);
     let list1 = _.list;
     let list2 = await getMusicInfo(list1);
     list1 = list1.map((_, i) => Object.assign(list2[i], _));
@@ -701,11 +702,6 @@ async function getLyric(musicItem) {
 
 
 
-
-
-
-
-
 // 实现搜索
 async function search(query, page, type) {
     let _type = {
@@ -747,7 +743,7 @@ async function search(query, page, type) {
         },
     } [type];
     let url = "https://gateway.kugou.com/complexsearch/" + _type.v + "/search/" + _type.s;
-    let _ = await webSign(url, ["keyword=" + query, _type.p]);
+    let _ = await webSign(url, ["keyword=" + query, _type.p], "data", page);
     let list = _.lists || [];
     if (type == "music") {
         list = await getMusicInfo(list);
@@ -820,6 +816,49 @@ async function importMusicItem(urlLike) {
 
 
 
+// 格式化歌曲评论
+function formatComment(_) {
+    return {
+        // 评论ID
+        id: _.id,
+        // 用户名
+        nickName: _.user_name,
+        // 头像
+        avatar: _.user_pic,
+        // 评论内容
+        comment: _.content,
+        // 点赞数
+        like: _.like?.likenum,
+        // 评论时间
+        createAt: _.addtime,
+        // 地址
+        location: _.location,
+        // 回复
+        replies: [].map(formatComment),
+        /* 其他参数 */
+        type: "11" // 11评论
+    };
+}
+// 获取歌曲评论
+async function getMusicComments(musicItem, page = 1) {
+    let hash = musicItem.hash || musicItem.id;
+    let list = await webSign("http://m.comment.service.kugou.com/r/v1/rank/topliked", [
+        "extdata=" + hash,
+        "schash=" + hash,
+        "p=" + page,
+        "code=fc4be23b4e972707f36b8a828a93ba8a",
+        "clienttoken=",
+        "ver=10",
+        "kugouid=0"
+    ], "list", page);
+    return {
+        isEnd: list.length < pageSize,
+        data: list.map(formatComment)
+    }
+}
+
+
+
 // 返回函数
 module.exports = {
     platform: "酷狗音乐",
@@ -883,5 +922,5 @@ module.exports = {
     getMusicInfo, // 获取歌曲详情
     getMediaSource, // 获取播放链接
     getLyric, // 获取歌词
-    // getMusicComments, // 获取歌曲评论
+    getMusicComments, // 获取歌曲评论
 };
